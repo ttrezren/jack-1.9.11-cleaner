@@ -1,9 +1,16 @@
 #!/bin/sh
 
-ERR=/tmp/remove_JackInstaller_log
+ERR=/tmp/remove_Jack_log
 
-echo "Remove all Jack(OSX) resources, put log file in /tmp/remove_JackInstaller_log"
+echo "Remove all Jack resources, log errors in /tmp/remove_Jack_log"
 
+## these files are found in JackOSX.0.92
+sudo rm -rf "/Library/Frameworks/Jack.framework" 2>>$ERR
+sudo rm -rf "/System/Library/Frameworks/Jack.framework" 2>>$ERR
+sudo rm -rf "/Library/Audio/Plug-Ins/HAL/JackAudioServer.plugin" 2>>$ERR
+sudo rm -f "/Applications/Jack/Documentation.pdf" 2>>$ERR
+
+## these files are common
 sudo rm -f "/usr/local/bin/jackd" 2>>$ERR
 sudo rm -f "/usr/local/bin/jackdmp" 2>>$ERR
 sudo rm -f "/usr/local/bin/jack_metro" 2>>$ERR
@@ -12,12 +19,8 @@ sudo rm -f "/usr/local/bin/jack_disconnect" 2>>$ERR
 sudo rm -f "/usr/local/bin/jack_connect" 2>>$ERR
 sudo rm -f "/usr/local/bin/jack_load" 2>>$ERR
 sudo rm -f "/usr/local/bin/jack_unload" 2>>$ERR
-sudo rm -f "/usr/local/bin/jack_netsource" 2>>$ERR
-sudo rm -f "/usr/local/lib/jackmp/jack_coreaudio.so" 2>>$ERR
-sudo rm -f "/usr/local/lib/jackmp/jack_coremidi.so" 2>>$ERR
-sudo rm -f "/usr/local/lib/jackmp/jack_loopback.so" 2>>$ERR
+sudo rm -f "/usr/local/lib/jackmp/jack_coreaudio.so" 2>>$ERR 
 sudo rm -f "/usr/local/lib/jackmp/jack_net.so" 2>>$ERR
-sudo rm -f "/usr/local/lib/jackmp/jack_netone.so" 2>>$ERR
 sudo rm -f "/usr/local/lib/jackmp/netmanager.so" 2>>$ERR
 sudo rm -f "/usr/local/lib/jackmp/netadapter.so" 2>>$ERR
 sudo rm -f "/usr/local/lib/jackmp/audioadapter.so" 2>>$ERR
@@ -27,18 +30,15 @@ sudo rm -rf "/usr/local/lib/jackmp" 2>>$ERR
 sudo rm -rf "/Library/Frameworks/Jackmp.framework" 2>>$ERR
 sudo rm -rf "/Library/Frameworks/Jackservermp.framework" 2>>$ERR
 sudo rm -rf "/Library/Frameworks/Jacknet.framework" 2>>$ERR
-sudo rm -rf "/Library/Frameworks/Panda.framework" 2>>$ERR
 sudo rm -rf "/System/Library/Frameworks/Jackmp.framework" 2>>$ERR
 sudo rm -rf "/System/Library/Frameworks/Jackservermp.framework" 2>>$ERR
 sudo rm -rf "/System/Library/Frameworks/Jacknet.framework" 2>>$ERR
-sudo rm -rf "/System/Library/Frameworks/Panda.framework" 2>>$ERR
 sudo rm -f "/usr/local/lib/libjack.0.dylib" 2>>$ERR
 sudo rm -f "/usr/local/lib/libjack.dylib" 2>>$ERR
 sudo rm -f "/usr/local/lib/libjackserver.0.dylib" 2>>$ERR
 sudo rm -f "/usr/local/lib/libjackserver.dylib" 2>>$ERR
 sudo rm -f "/usr/local/lib/libjacknet.0.dylib" 2>>$ERR
 sudo rm -f "/usr/local/lib/libjacknet.dylib" 2>>$ERR
-sudo rm -rf "/Library/Audio/Plug-Ins/HAL/JackRouter.plugin" 2>>$ERR
 sudo rm -rf "/Library/Audio/Plug-Ins/Components/JACK-insert.component" 2>>$ERR
 sudo rm -rf "/Library/Audio/Plug-Ins/VST/JACK-insert.vst" 2>>$ERR
 sudo rm -f "$HOME/Library/Preferences/JackPilot.plist" 2>>$ERR
@@ -47,9 +47,19 @@ sudo rm -rf "/Applications/Jack" 2>>$ERR
 sudo rm -f /Library/Receipts/JackOSX.0.7* 2>>$ERR
 sudo rm -f /Library/Receipts/JackOSX.0.8* 2>>$ERR
 sudo rm -f /Library/Receipts/JackOSX.0.9* 2>>$ERR
+
+## these files are found in jack2 >= 1.9.11
+sudo rm -f "/usr/local/bin/jack_netsource" 2>>$ERR
+sudo rm -f "/usr/local/lib/jackmp/jack_coremidi.so" 2>>$ERR
+sudo rm -f "/usr/local/lib/jackmp/jack_loopback.so" 2>>$ERR
+sudo rm -f "/usr/local/lib/jackmp/jack_netone.so" 2>>$ERR
+sudo rm -rf "/Library/Frameworks/Panda.framework" 2>>$ERR
+sudo rm -rf "/System/Library/Frameworks/Panda.framework" 2>>$ERR
+sudo rm -rf "/Library/Audio/Plug-Ins/HAL/JackRouter.plugin" 2>>$ERR
 sudo rm -f "$HOME/Library/Preferences/gpl.elementicaotici.JackPilot.plist" 2>>$ERR
 sudo rm -f "$HOME/.jackdrc" 2>>$ERR
 sudo rm -f "/private/etc/jackd.conf" 2>>$ERR
 sudo rm -f "/private/var/db/receipts/com.grame.jackosx.bom" 2>>$ERR
 sudo rm -f "/private/var/db/receipts/com.grame.jackosx.plist" 2>>$ERR
 
+exit 0
