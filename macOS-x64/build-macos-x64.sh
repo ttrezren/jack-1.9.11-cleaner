@@ -130,7 +130,7 @@ copyBuildDirectory() {
 }
 
 function buildPackage() {
-    log_info "Apllication installer package building started.(1/3)"
+    log_info "Application installer package building started.(1/3)"
     pkgbuild --identifier org.${PRODUCT}.${VERSION} \
     --version ${VERSION} \
     --scripts ${TARGET_DIRECTORY}/darwin/scripts \
@@ -166,7 +166,7 @@ function createInstaller() {
     while true; do
         read -p "Do you wish to sign the installer (You should have Apple Developer Certificate) [y/N]?" answer
         [[ $answer == "y" || $answer == "Y" ]] && FLAG=true && break
-        [[ $answer == "n" || $answer == "N" || $answer == "" ]] && log_info "Skiped signing process." && FLAG=false && break
+        [[ $answer == "n" || $answer == "N" || $answer == "" ]] && log_info "Skipped signing process." && FLAG=false && break
         echo "Please answer with 'y' or 'n'"
     done
     [[ $FLAG == "true" ]] && signProduct ${PRODUCT}-macos-installer-x64-${VERSION}.pkg
@@ -180,14 +180,14 @@ function createUninstaller(){
 }
 
 #Pre-requisites
-command -v mvn -v >/dev/null 2>&1 || {
-    log_warn "Apache Maven was not found. Please install Maven first."
-    # exit 1
-}
-command -v ballerina >/dev/null 2>&1 || {
-    log_warn "Ballerina was not found. Please install ballerina first."
-    # exit 1
-}
+#command -v mvn -v >/dev/null 2>&1 || {
+#    log_warn "Apache Maven was not found. Please install Maven first."
+#    # exit 1
+#}
+#command -v ballerina >/dev/null 2>&1 || {
+#    log_warn "Ballerina was not found. Please install ballerina first."
+#    # exit 1
+#}
 
 #Main script
 log_info "Installer generating process started."
