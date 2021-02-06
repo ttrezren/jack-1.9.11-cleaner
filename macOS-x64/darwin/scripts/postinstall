@@ -1,12 +1,9 @@
 #!/bin/bash
 
-#Custermize this for your application
-APPLICATION_FILE_PATH=jackdmp
-ERR=/tmp/remove_JackInstaller_log
+ERR=/tmp/install_Jacktrip_log
 
 #Parameters
 PRODUCT_HOME=/Library/__PRODUCT__/__VERSION__
-ERR=/tmp/
 
 echo "Post installation process started"
 
@@ -16,13 +13,11 @@ cd ${PRODUCT_HOME}
 chmod -R 755 .
 [ -d /usr/local/bin ] || mkdir /usr/local/bin
 
-
 # create symlink for each application file
-for filename in ${PRODUCT_HOME}; do
+for filename in ${PRODUCT_HOME}/jack2_binaries; do
     ln -s ${PRODUCT_HOME}/${filename} /usr/local/bin/${filename} 2>>$ERR
 done
 
-#Add application shortcut to /usr/local/bin
-#rm -f /usr/local/bin/__PRODUCT__-__VERSION__
-#ln -s ${PRODUCT_HOME}/${APPLICATION_FILE_PATH} /usr/local/bin/__PRODUCT__-__VERSION__
+sudo mv -f QjackCtl.app /Applications
+
 echo "Post installation process finished"

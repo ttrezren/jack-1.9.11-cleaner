@@ -1,8 +1,8 @@
 #!/bin/sh
 
-ERR=/tmp/remove_Jack_log
+ERR=/tmp/install_Jacktrip_log
 
-echo "Remove all Jack resources, log errors in /tmp/remove_Jack_log"
+echo "Remove all Jack resources, log errors in ${ERR}"
 
 ## these files are found in JackOSX.0.92
 sudo rm -rf "/Library/Frameworks/Jack.framework" 2>>$ERR
